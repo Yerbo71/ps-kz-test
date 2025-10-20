@@ -4,6 +4,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import { antdTheme } from '@/config/antdTheme';
 import { MainLayout } from '@/components/layout/mainLayout/mainLayout';
+import './globals.scss';
 
 const openSans = Open_Sans({
   subsets: ['latin', 'cyrillic'],
@@ -12,7 +13,10 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: 'PS Test',
-  description: 'Frontend position test'
+  description: 'Frontend position test',
+  icons: {
+    icon: '/ps-logo.svg'
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
