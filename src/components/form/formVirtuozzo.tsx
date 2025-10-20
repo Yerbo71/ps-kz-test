@@ -2,14 +2,12 @@
 
 import React from 'react';
 import styles from './formVirtuozzo.module.scss';
-import { Col, Row, Segmented, Typography, Select, InputNumber, Button } from 'antd';
+import { Col, Row, Segmented, Typography, Button } from 'antd';
 import Image from 'next/image';
-import type { InputNumberProps } from 'antd';
+import { OutlinedNumberInput } from '@/components/shared/outlinedNumberInput';
+import { OutlinedSelect } from '@/components/shared/outlinedSelect';
 
 const FormVirtuozzo = () => {
-  const onChange: InputNumberProps['onChange'] = (value) => {
-    console.log('changed', value);
-  };
   return (
     <div className={styles.card}>
       <Row gutter={[30, 20]}>
@@ -30,13 +28,7 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/core.svg" alt="Core" width={30} height={30} />
             <div className={styles.item__content}>
-              <InputNumber
-                min={1}
-                max={500}
-                defaultValue={3}
-                onChange={onChange}
-                style={{ width: '100%' }}
-              />
+              <OutlinedNumberInput label="Ядра процессора" />
               <span>
                 <span style={{ fontWeight: 700 }}>1 900</span> тг за ядро/мес
               </span>
@@ -47,13 +39,7 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/ram.svg" alt="RAM" width={30} height={30} />
             <div className={styles.item__content}>
-              <InputNumber
-                min={1}
-                max={500}
-                defaultValue={3}
-                onChange={onChange}
-                style={{ width: '100%' }}
-              />
+              <OutlinedNumberInput label="Оперативная память, ГБ" />
               <span>
                 <span style={{ fontWeight: 700 }}>5 200</span> тг за ГБ/мес
               </span>
@@ -64,13 +50,7 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/nvme.svg" alt="NVME" width={30} height={30} />
             <div className={styles.item__content}>
-              <InputNumber
-                min={1}
-                max={500}
-                defaultValue={3}
-                onChange={onChange}
-                style={{ width: '100%' }}
-              />
+              <OutlinedNumberInput label="Быстрый диск NVME, ГБ" />
               <span>
                 <span style={{ fontWeight: 700 }}>160</span> тг за ГБ/мес
               </span>
@@ -81,13 +61,7 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/disk.svg" alt="Disk" width={30} height={30} />
             <div className={styles.item__content}>
-              <InputNumber
-                min={1}
-                max={500}
-                defaultValue={3}
-                onChange={onChange}
-                style={{ width: '100%' }}
-              />
+              <OutlinedNumberInput label="Архивный диск, ГБ" />
               <span>
                 <span style={{ fontWeight: 700 }}>10</span> тг за ГБ/мес
               </span>
@@ -98,9 +72,9 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/public-network.svg" alt="Public Network" width={30} height={30} />
             <div className={styles.item__content}>
-              <Select
+              <OutlinedSelect
+                label="Публичная сеть"
                 defaultValue="not-order"
-                style={{ width: '100%' }}
                 options={[
                   { value: 'order', label: 'Заказывать ' },
                   { value: 'not-order', label: 'Не заказывать' }
@@ -116,13 +90,7 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/ip-address.svg" alt="Ip Address" width={30} height={30} />
             <div className={styles.item__content}>
-              <InputNumber
-                min={1}
-                max={500}
-                defaultValue={3}
-                onChange={onChange}
-                style={{ width: '100%' }}
-              />
+              <OutlinedNumberInput label="Маршрутизируемые IP-адреса" />
               <span>
                 <span style={{ fontWeight: 700 }}>1000</span> тг за адрес/мес
               </span>
@@ -133,9 +101,9 @@ const FormVirtuozzo = () => {
           <div className={styles.card__item}>
             <Image src="/icons/router.svg" alt="Router" width={30} height={30} />
             <div className={styles.item__content}>
-              <Select
+              <OutlinedSelect
+                label="Тарифный план"
                 defaultValue="compact"
-                style={{ width: '100%' }}
                 options={[
                   { value: 'compact', label: 'Compact — 1 vCPU, 512 MB RAM' },
                   { value: 'large', label: 'Large — 2 vCPU, 1 GB RAM' }
@@ -150,7 +118,7 @@ const FormVirtuozzo = () => {
         <Col span={24}>
           <Row gutter={[30, 20]}>
             <Col xs={24} sm={24} md={12} lg={8}>
-              <Button type="primary" style={{ width: '100%' }}>
+              <Button type="primary" style={{ width: '100%', height: '40px' }}>
                 Заказать
               </Button>
             </Col>
