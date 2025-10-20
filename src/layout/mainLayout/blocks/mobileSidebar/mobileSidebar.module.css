@@ -1,0 +1,29 @@
+.mobileSidebar {
+  width: 100%;
+}
+
+.mobileSidebar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mobileSidebar__menu li {
+  background-color: #2a2c36;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+.mobileSidebar__menu li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 0;
+}
+
+/*# sourceMappingURL=mobileSidebar.module.css.map */

@@ -5,6 +5,7 @@ import { Header } from '@/layout/mainLayout/blocks/header/header';
 import { Sidebar } from '@/layout/mainLayout/blocks/sidebar/sidebar';
 import styles from './mainLayout.module.scss';
 import { useState } from 'react';
+import { MobileSidebar } from '@/layout/mainLayout/blocks/mobileSidebar/mobileSidebar';
 
 const { useBreakpoint } = Grid;
 
@@ -24,15 +25,16 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
         )}
         {isMobile && (
           <Drawer
-            placement="top"
+            placement="left"
             open={open}
             onClose={() => setOpen(false)}
-            height="100vh"
             closable={false}
-            getContainer={false}
-            rootStyle={{ position: 'absolute', top: '60px' }}
+            rootStyle={{
+              position: 'absolute',
+              top: '60px'
+            }}
           >
-            123
+            <MobileSidebar />
           </Drawer>
         )}
         <Layout.Content className={styles.content}>{children}</Layout.Content>

@@ -7,4 +7,9 @@
   overflow-y: auto;
 }
 
+.sidebar {
+  height: 100%;
+  width: 60px;
+}
+
 /*# sourceMappingURL=mainLayout.module.css.map */

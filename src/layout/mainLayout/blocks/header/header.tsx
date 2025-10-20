@@ -28,7 +28,6 @@ export const Header: React.FC<HeaderProps> = ({ onMenuClick, isMenuOpen }) => {
               </div>
             </div>
           )}
-          {/* --- Mobile --- */}
           {isMobile && (
             <div className={styles.mobile__content}>
               <button
