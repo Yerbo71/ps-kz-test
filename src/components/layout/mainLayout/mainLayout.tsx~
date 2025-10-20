@@ -1,0 +1,35 @@
+'use client';
+
+import { useState } from 'react';
+import { Layout } from 'antd';
+import { Header } from '../header/header';
+import { Sidebar } from '../sidebar/sidebar';
+import styles from './MainLayout.module.scss';
+
+const { Sider, Content } = Layout;
+
+export const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleSidebar = () => setCollapsed((prev) => !prev);
+
+  return (
+    <Layout className={styles.layout}>
+      {/* Сайдбар слева */}
+      <Sider
+        collapsed={collapsed}
+        collapsible={false}
+        className={styles.sidebar}
+        width={72}
+        collapsedWidth={0}
+      >
+        <Sidebar />
+      </Sider>
+
+      <Layout>
+        <Header onToggleSidebar={toggleSidebar} />
+        <Content className={styles.content}>{children}</Content>
+      </Layout>
+    </Layout>
+  );
+};

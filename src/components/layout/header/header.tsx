@@ -1,0 +1,45 @@
+'use client';
+import { MenuOutlined } from '@ant-design/icons';
+import styles from './header.module.scss';
+import Image from 'next/image';
+import Link from 'next/link';
+
+interface HeaderProps {
+  onToggleSidebar: () => void;
+}
+
+export const Header = ({ onToggleSidebar }: HeaderProps) => {
+  return (
+    <header className={styles.header}>
+      <div className={styles.header__content}>
+        <div>
+          <div className={styles.desktop}>
+            <Link href="/" className={styles.link}>
+              <Image src="/ps-logo.svg" alt="PS" width={34} height={30} />
+            </Link>
+            <div>
+              Консоль <br /> управления
+            </div>
+          </div>
+          <div className={styles.mobile}>
+            <div className={styles.mobile__content}>
+              <button
+                className={styles.mobile__burger}
+                onClick={onToggleSidebar}
+                aria-label="Open menu"
+              >
+                <MenuOutlined />
+              </button>
+              <Link href="/" className={styles.link}>
+                <Image src="/ps-logo.svg" alt="PS" width={34} height={30} />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>Профиль</div>
+        </div>
+      </div>
+    </header>
+  );
+};
