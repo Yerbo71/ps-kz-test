@@ -1,20 +1,24 @@
 'use client';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 import styles from './header.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Badge, Avatar } from 'antd';
+import { Badge, Avatar, Grid } from 'antd';
+import React from 'react';
 
 interface HeaderProps {
-  onToggleSidebar: () => void;
+  onMenuClick: () => void;
+  isMenuOpen?: boolean;
 }
 
-export const Header = ({ onToggleSidebar }: HeaderProps) => {
+export const Header: React.FC<HeaderProps> = ({ onMenuClick, isMenuOpen }) => {
+  const screens = Grid.useBreakpoint();
+  const isMobile = !screens.md;
   return (
     <header className={styles.header}>
       <div className={styles.header__content}>
         <div>
-          <div className={styles.desktop}>
+          {!isMobile && (
             <div className={styles.desktop__content}>
               <Link href="/" className={styles.link}>
                 <Image src="/ps-logo.svg" alt="PS" width={34} height={30} />
@@ -23,24 +27,25 @@ export const Header = ({ onToggleSidebar }: HeaderProps) => {
                 Консоль <br /> управления
               </div>
             </div>
-          </div>
-          <div className={styles.mobile}>
+          )}
+          {/* --- Mobile --- */}
+          {isMobile && (
             <div className={styles.mobile__content}>
               <button
                 className={styles.mobile__burger}
-                onClick={onToggleSidebar}
-                aria-label="Open menu"
+                onClick={onMenuClick}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               >
-                <MenuOutlined />
+                {isMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
               </button>
               <Link href="/" className={styles.link}>
                 <Image src="/ps-logo.svg" alt="PS" width={34} height={30} />
               </Link>
             </div>
-          </div>
+          )}
         </div>
         <div className={styles.profile}>
-          <Badge dot color="green" style={{ top: 3, right: 14 }}>
+          <Badge dot color="green" style={{ top: 3, right: 14, cursor: 'pointer' }}>
             <Avatar
               size={30}
               style={{
@@ -74,10 +79,12 @@ export const Header = ({ onToggleSidebar }: HeaderProps) => {
             <Avatar size={30} style={{ backgroundColor: '#b83280' }}>
               К
             </Avatar>
-            <div className={styles.profile__name}>
-              <div className={styles.profile__first}>Имя</div>
-              <div className={styles.profile__last}>Фамилия</div>
-            </div>
+            {!isMobile && (
+              <div className={styles.profile__name}>
+                <div className={styles.profile__first}>Имя</div>
+                <div className={styles.profile__last}>Фамилия</div>
+              </div>
+            )}
           </div>
         </div>
       </div>

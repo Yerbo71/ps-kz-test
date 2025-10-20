@@ -11,6 +11,7 @@ export const antdTheme: ThemeConfig = {
     Button: {
       borderRadius: 10,
       fontWeight: 700
-    }
+    },
+    Typography: {}
   }
 };

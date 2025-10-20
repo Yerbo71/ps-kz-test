@@ -1,10 +1,10 @@
-import { Button } from 'antd';
+import FormVirtuozzo from '@/components/form/formVirtuozzo';
+import styles from './page.module.scss';
 
 export default function Home() {
   return (
-    <main>
-      456
-      <Button type="primary">Button</Button>
+    <main className={styles.container}>
+      <FormVirtuozzo />
     </main>
   );
 }

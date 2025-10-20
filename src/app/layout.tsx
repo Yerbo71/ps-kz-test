@@ -3,7 +3,7 @@ import { Open_Sans } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import { antdTheme } from '@/config/antdTheme';
-import { MainLayout } from '@/components/layout/mainLayout/mainLayout';
+import { MainLayout } from '@/layout/mainLayout/mainLayout';
 import './globals.scss';
 
 const openSans = Open_Sans({
