@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, App as AntApp } from 'antd';
 import { antdTheme } from '@/config/antdTheme';
 import { MainLayout } from '@/layout/mainLayout/mainLayout';
 import './globals.scss';
@@ -25,7 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={openSans.variable}>
         <AntdRegistry>
           <ConfigProvider theme={antdTheme}>
-            <MainLayout>{children}</MainLayout>
+            <AntApp>
+              <MainLayout>{children}</MainLayout>
+            </AntApp>
           </ConfigProvider>
         </AntdRegistry>
       </body>

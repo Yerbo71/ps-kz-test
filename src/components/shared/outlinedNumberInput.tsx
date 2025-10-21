@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 interface OutlinedNumberInputProps {
   label: string;
-  initialValue?: number;
+  value?: number;
   onChange?: (value: number) => void;
   min?: number;
   max?: number;
@@ -11,24 +11,20 @@ interface OutlinedNumberInputProps {
 
 export const OutlinedNumberInput: React.FC<OutlinedNumberInputProps> = ({
   label,
-  initialValue = 0,
+  value = 0,
   onChange,
   min = 0,
   max
 }) => {
-  const [value, setValue] = useState(initialValue);
-
   const handleIncrement = () => {
     if (max !== undefined && value >= max) return;
     const newValue = value + 1;
-    setValue(newValue);
     onChange?.(newValue);
   };
 
   const handleDecrement = () => {
     if (value <= min) return;
     const newValue = value - 1;
-    setValue(newValue);
     onChange?.(newValue);
   };
 
